@@ -46,7 +46,9 @@ The other way it needs improvement is that it is not particulary extensible. It 
 search dimension, say "age." Following this pattern, there would then be 8 endpoints. And if there were still another search 
 dimension, we'd have 16 endpoints. So clearly, this is not ideal. However, for now it works well.
 
-The other majoy avenue for improvement would be the SQL queries in `com.dvilinsk.testermatch.repository.TesterRepository`.
+The build process also needs work. A user of this service should not have to run postgres commands on their commandline to use the API.
+
+The other major avenue for improvement would be the SQL queries in `com.dvilinsk.testermatch.repository.TesterRepository`.
 They work well, but they don't take advantage of any built-in JPA interfaces or JPQL queries. 
 
 ## Other notes

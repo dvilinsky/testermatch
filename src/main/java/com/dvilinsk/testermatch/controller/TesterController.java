@@ -1,12 +1,10 @@
 package com.dvilinsk.testermatch.controller;
 
 import com.dvilinsk.testermatch.DTO.TesterDTO;
-import com.dvilinsk.testermatch.models.Tester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.dvilinsk.testermatch.repository.TesterRepository;
@@ -54,6 +52,11 @@ public class TesterController {
         return new ResponseEntity<>(testers, HttpStatus.OK);
     }
 
+    /**
+     * Lowercases every string in a given list
+     * @param data List of values to be lowercase
+     * @return A new list where each value of the input list has been lowercased
+     */
     private List<String> lower(List<String> data) {
         List<String> lower = new ArrayList<>();
         for (String s : data) {
