@@ -9,9 +9,10 @@ This is, admittedly, the least ideal part of the build process, and definitely n
 If I knew how to package up a postgres instance, I would do that instead.
 
 4. Install [gradle](https://gradle.org/install/)
-5. Run gradlew clean build.
+5. Run gradlew clean build. If you are on linux, you may get the error: "./gradlew: Permission denied". If so, change the file
+permissions with `chmod +x gradlew`
 6. This will produce the jar in `build/libs/testermatch-1.0-SNAPSHOT.jar`
-Run this jar with `java -jar build/libs/testermatch-1.0-SNAPSHOT`.
+Run this jar with `java -jar build/libs/testermatch-1.0-SNAPSHOT.jar`.
 The first time you run the project, Flyway will automatically migrate the database
 and populate it with the application data.
 7. Service will be available at localhost:8080
@@ -26,7 +27,7 @@ what kind of search a user can perform:
 4. Country=[SOME COUNTRY(s)] and Device[SOME DEVICE(s)]
 
 With that in mind, the app exposes the following four endpoints, each one corresponding
-to one of the cases descrbed above. They are, rspectively:
+to one of the cases descrbed above. They are, respectively:
 1. `/testers/all`
 2. `/testers/device` This endpoint requires a query parameter `devices` which is the device(s) for which you want to search. At first
 glance, it may seem that this endpoint is oddly named. However, when country=ALL, I understood that
