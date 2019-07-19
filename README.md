@@ -7,7 +7,6 @@
 Set the username and password to your database's username and password. 
 This is, admittedly, the least ideal part of the build process, and definitely needs improvement. 
 If I knew how to package up a postgres instance, I would do that instead.
-
 4. Install [gradle](https://gradle.org/install/)
 5. Run gradlew clean build. If you are on linux, you may get the error: "./gradlew: Permission denied". If so, change the file
 permissions with `chmod +x gradlew`
@@ -53,5 +52,5 @@ The other major avenue for improvement would be the SQL queries in `com.dvilinsk
 They work well, but they don't take advantage of any built-in JPA interfaces or JPQL queries. 
 
 ## Other notes
-In `src/main/java/resources` there is quick and dirty python script in `csv_to_sql.py` which I used to generate the migration insertion files. It is not necessary to use this service,
+In `src/main/java/resources` there is a quick and dirty python script in `csv_to_sql.py` which I used to generate the migration insertion files. It is not necessary to use this service,
 but is included in case you were interested in seeing it.
