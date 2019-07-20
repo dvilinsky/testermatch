@@ -29,7 +29,7 @@ public class TesterController {
 
     @GetMapping("/testers/countries")
     public ResponseEntity<List<TesterDTO>> getTestersInCountry(@RequestParam List<String> countries) {
-        if (countries == null || countries.isEmpty()) {
+        if (invalidParams(countries)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         List<TesterDTO> testers = testerRepository.findByCountry(lower(countries));
@@ -38,7 +38,7 @@ public class TesterController {
 
     @GetMapping("/testers/devices")
     public ResponseEntity<List<TesterDTO>> getTestersTestingOnDevice(@RequestParam List<String> devices) {
-        if (devices == null || devices.isEmpty()) {
+        if (invalidParams(devices)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         List<TesterDTO> testers = testerRepository.findByDevice(lower(devices));
@@ -48,6 +48,9 @@ public class TesterController {
     @GetMapping("/testers")
     public ResponseEntity<List<TesterDTO>> getTestersByCountyAndDevice(@RequestParam List<String> countries,
                                                                        @RequestParam List<String> devices) {
+        if (invalidParams(countries) || invalidParams(devices)) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         List<TesterDTO> testers = testerRepository.findByDeviceAndCountry(lower(devices), lower(countries));
         return new ResponseEntity<>(testers, HttpStatus.OK);
     }
@@ -63,5 +66,9 @@ public class TesterController {
             lower.add(s.toLowerCase());
         }
         return lower;
+    }
+    
+    private boolean invalidParams(List<String> params) {
+        return params == null || params.isEmpty();
     }
 }
