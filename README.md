@@ -1,14 +1,14 @@
 ## Running the project:
 1. Install [postgres](https://www.postgresql.org/download/)
 2. Run the command `psql -U USERNAME - c "create database applause_test"
-3. In `src/main/applicaton.properties` you will find the following two lines:
+3. In `src/main/resources/applicaton.properties` you will find the following two lines:
       `spring.datasource.username=postgres`
      `spring.datasource.password=pw`
-Set the username and password to your database's username and password. 
+Set the username and password to your database's username and password. Do the same for the `spring.flyway.user` and `spring.flyway.password` properties
 This is, admittedly, the least ideal part of the build process, and definitely needs improvement. 
 If I knew how to package up a postgres instance, I would do that instead.
 4. Install [gradle](https://gradle.org/install/)
-5. Run gradlew clean build. If you are on linux, you may get the error: "./gradlew: Permission denied". If so, change the file
+5. Run `gradlew clean build`. If you are on Linux, you may get the error: "./gradlew: Permission denied". If so, change the file
 permissions with `chmod +x gradlew`
 6. This will produce the jar in `build/libs/testermatch-1.0-SNAPSHOT.jar`
 Run this jar with `java -jar build/libs/testermatch-1.0-SNAPSHOT.jar`.
@@ -52,5 +52,5 @@ The other major avenue for improvement would be the SQL queries in `com.dvilinsk
 They work well, but they don't take advantage of any built-in JPA interfaces or JPQL queries. 
 
 ## Other notes
-In `src/main/java/resources` there is a quick and dirty python script in `csv_to_sql.py` which I used to generate the migration insertion files. It is not necessary to use this service,
+In `src/main/resources` there is a quick and dirty python script in `csv_to_sql.py` which I used to generate the migration insertion files. It is not necessary to use this service,
 but is included in case you were interested in seeing it.
